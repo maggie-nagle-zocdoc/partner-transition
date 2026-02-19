@@ -1,0 +1,250 @@
+/* 🎛️ ANIMATION CONTROLS CSS - Fine-tune animation parameters
+ * Extends styles-test.css with animation control panel
+ * This file should be loaded AFTER styles-test.css
+ */
+
+/* 🎛️ ANIMATION CONTROLS PANEL STYLES */
+.animation-controls-panel {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.98);
+    color: #333333;
+    padding: 1rem;
+    border-radius: 12px;
+    z-index: 1000;
+    max-width: 300px;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(10px);
+}
+
+.control-group {
+    margin-bottom: 1rem;
+    transition: opacity 0.2s ease, max-height 0.2s ease;
+    overflow: hidden;
+}
+
+.control-group:last-of-type {
+    margin-bottom: 0.75rem;
+}
+
+.control-group[data-version] {
+    display: block;
+}
+
+.control-group label {
+    display: block;
+    color: #727272;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-bottom: 0.125rem;
+    line-height: 1.4;
+    text-align: left;
+}
+
+.control-select {
+    width: 100%;
+    background: white;
+    border: 1px solid #E2E1DF;
+    color: #333333;
+    padding: 0.625rem 0.75rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.control-select:hover {
+    border-color: #333333;
+    box-shadow: 0 2px 8px rgba(51, 51, 51, 0.1);
+}
+
+.control-select:focus {
+    outline: none;
+    border-color: #333333;
+    box-shadow: 0 0 0 3px rgba(51, 51, 51, 0.1);
+}
+
+.control-select option {
+    background: white;
+    color: #333333;
+    padding: 0.5rem;
+}
+
+/* Slider Styles */
+.control-slider {
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: #E2E1DF;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0 0 0.125rem 0;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.control-slider:hover {
+    background: #D6D5D3;
+}
+
+.control-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #9CA3AF;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s ease;
+}
+
+.control-slider::-webkit-slider-thumb:hover {
+    background: #6B7280;
+    transform: scale(1.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.control-slider::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #9CA3AF;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s ease;
+}
+
+.control-slider::-moz-range-thumb:hover {
+    background: #6B7280;
+    transform: scale(1.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.slider-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: #727272;
+    margin-top: 0.125rem;
+}
+
+/* Control Buttons */
+.control-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.control-btn {
+    border: none;
+    padding: 0.5rem 0.875rem;
+    border-radius: 6px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    width: 100%;
+}
+
+.control-btn.primary {
+    background: #FEED5A;
+    color: #333333;
+    box-shadow: 0 2px 8px rgba(254, 237, 90, 0.25);
+}
+
+.control-btn.primary:hover {
+    background: #FDE047;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(254, 237, 90, 0.35);
+}
+
+.control-btn.primary:active {
+    transform: translateY(0);
+}
+
+.control-btn.secondary {
+    background: transparent;
+    color: #333333;
+    border: 1px solid #333333;
+    box-shadow: none;
+}
+
+.control-btn.secondary:hover {
+    background: #333333;
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(51, 51, 51, 0.2);
+}
+
+.control-btn.secondary:active {
+    transform: translateY(0);
+    background: #1a1a1a;
+}
+
+.control-btn.reset {
+    background: #f3f4f6;
+    color: #333333;
+    border: 1px solid #E2E1DF;
+}
+
+.control-btn.reset:hover {
+    background: #e5e7eb;
+    transform: translateY(-1px);
+}
+
+.control-btn.reset:active {
+    transform: translateY(0);
+}
+
+/* Responsive Design for Controls Panel */
+@media (max-width: 768px) {
+    .animation-controls-panel {
+        max-width: calc(100vw - 40px);
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+        max-height: 70vh;
+        padding: 0.875rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .animation-controls-panel {
+        padding: 0.75rem;
+        max-width: calc(100vw - 20px);
+        left: 10px;
+        right: 10px;
+    }
+    
+    .control-group {
+        margin-bottom: 0.875rem;
+    }
+    
+    .control-actions {
+        gap: 0.375rem;
+        margin-top: 0.875rem;
+    }
+    
+    .control-btn {
+        padding: 0.4375rem 0.75rem;
+        font-size: 0.75rem;
+    }
+}
+
+/* Ensure controls panel doesn't interfere with main content on mobile */
+@media (max-width: 768px) {
+    .main-content {
+        padding-bottom: calc(70vh + 40px);
+    }
+}
+

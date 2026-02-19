@@ -397,10 +397,19 @@ body {
 /* Reset logo containers during restart */
 .restarting-animation .logo-container:first-child {
     transform: translateX(50px) !important;
+    opacity: 1 !important;
 }
 
 .restarting-animation .logo-container:last-child {
     transform: translateX(-50px) !important;
+    opacity: 1 !important;
+}
+
+/* Reset for version 3, 5 */
+.restarting-animation .version-3 .logo-container,
+.restarting-animation .version-5 .logo-container {
+    opacity: 0 !important;
+    transform: scale(0) !important;
 }
 
 /* Reset dots during restart */
@@ -409,19 +418,162 @@ body {
     transform: scale(0) !important;
 }
 
-/* 🧪 VERSION 3 ANIMATIONS - Early Visible Dots (No Scale/Transparency) */
+/* 🧪 VERSION 3 ANIMATIONS - Fade & Scale from Center */
 
-/* Version 3: Logos slide apart very close together with much tighter overall spacing */
+/* Version 3: Logos fade in and scale up from center, end at same position as version 1 */
 .version-3 .brand-logos {
-    gap: 0.25rem !important; /* Much smaller gap between logo and dots section */
+    gap: 0 !important;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.version-3 .brand-logos .logo-container {
+    opacity: 0;
+    transform: scale(0.3);
+    position: relative !important;
 }
 
 .version-3 .brand-logos .logo-container:first-child {
-    animation: slideToLeftCloser 0.8s ease-out forwards !important;
+    animation: fadeScaleIn 0.8s ease-out forwards !important;
+    z-index: 3 !important;
 }
 
 .version-3 .brand-logos .logo-container:last-child {
-    animation: slideToRightCloser 0.8s ease-out forwards !important;
+    animation: fadeScaleIn 0.8s ease-out 0.15s forwards !important;
+    z-index: 2 !important;
+    margin-left: -12px !important; /* Same overlap as version 1 */
+}
+
+/* Hide dots in Version 3 */
+.version-3 .progress-dots {
+    opacity: 0 !important;
+    pointer-events: none;
+}
+
+.version-3 .transition-arrow {
+    display: none !important;
+}
+
+@keyframes fadeScaleIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) translateY(20px);
+    }
+    60% {
+        opacity: 0.8;
+        transform: scale(1.05) translateY(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateX(0) translateY(0); /* End at same position as version 1 */
+    }
+}
+
+/* 🧪 VERSION 4 ANIMATIONS - Scale from Center */
+
+/* Version 4: Logos scale up dramatically from center */
+.version-4 .brand-logos {
+    gap: 0.5rem !important;
+}
+
+.version-4 .brand-logos .logo-container {
+    opacity: 0;
+    transform: scale(0);
+}
+
+.version-4 .brand-logos .logo-container:first-child {
+    animation: scaleFromCenter 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards !important;
+}
+
+.version-4 .brand-logos .logo-container:last-child {
+    animation: scaleFromCenter 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s forwards !important;
+}
+
+/* Hide dots in Version 4 */
+.version-4 .progress-dots {
+    opacity: 0 !important;
+    pointer-events: none;
+}
+
+@keyframes scaleFromCenter {
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.15) rotate(5deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+/* 🧪 VERSION 5 ANIMATIONS - Rotate & Slide */
+
+/* Version 5: Logos rotate and slide in from sides, end at same position as version 1 */
+.version-5 .brand-logos {
+    gap: 0 !important;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.version-5 .brand-logos .logo-container {
+    position: relative !important;
+}
+
+.version-5 .brand-logos .logo-container:first-child {
+    animation: rotateSlideLeft 1s ease-out forwards !important;
+    z-index: 3 !important;
+}
+
+.version-5 .brand-logos .logo-container:last-child {
+    animation: rotateSlideRight 1s ease-out forwards !important;
+    z-index: 2 !important;
+    margin-left: -12px !important; /* Same overlap as version 1 */
+}
+
+/* Hide dots in Version 5 */
+.version-5 .progress-dots {
+    opacity: 0 !important;
+    pointer-events: none;
+}
+
+.version-5 .transition-arrow {
+    display: none !important;
+}
+
+@keyframes rotateSlideLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(80px) rotate(-180deg) scale(0.5);
+    }
+    60% {
+        opacity: 0.8;
+        transform: translateX(-5px) rotate(-10deg) scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) rotate(0deg) scale(1); /* End at same position as version 1 */
+    }
+}
+
+@keyframes rotateSlideRight {
+    0% {
+        opacity: 0;
+        transform: translateX(-80px) rotate(180deg) scale(0.5);
+    }
+    60% {
+        opacity: 0.8;
+        transform: translateX(5px) rotate(10deg) scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) rotate(0deg) scale(1); /* End at same position as version 1 */
+    }
 }
 
 /* Also override mobile gaps for Version 3 - tighter for closer logos */
@@ -834,7 +986,7 @@ body {
     font-weight: 600; /* Sharp Sans SemiBold for headlines */
     line-height: 1.2;
     color: #333333; /* Primary text color */
-    margin-bottom: 1rem;
+    margin-bottom: 4px;
     letter-spacing: -0.02em;
 }
 
