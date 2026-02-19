@@ -173,8 +173,8 @@ class AnimationControlsPage {
             } else if (this.currentVersion === 3) {
                 // Version 3 uses fade and scale animations
                 logo.style.animation = `fadeScaleIn ${duration}s ${easing} ${delay + (index * 0.1)}s forwards`;
-            } else if (this.currentVersion === 5) {
-                // Version 5 uses rotate and slide
+            } else if (this.currentVersion === 4) {
+                // Version 4 uses rotate and slide
                 if (index === 0) {
                     logo.style.animation = `rotateSlideLeft ${duration}s ${easing} ${delay}s forwards`;
                 } else {
@@ -271,7 +271,7 @@ class AnimationControlsPage {
     }
     
     applyDotAnimations() {
-        if (this.currentVersion === 1 || this.currentVersion === 3 || this.currentVersion === 5) {
+        if (this.currentVersion === 1 || this.currentVersion === 3 || this.currentVersion === 4) {
             // These versions have no dots
             return;
         }
@@ -435,7 +435,7 @@ class AnimationControlsPage {
         this.currentVersion = selectedVersion;
         
         // Remove all version classes
-        this.container.classList.remove('version-1', 'version-2', 'version-3', 'version-5');
+        this.container.classList.remove('version-1', 'version-2', 'version-3', 'version-4');
         
         // Apply new version class
         this.container.classList.add(`version-${selectedVersion}`);
@@ -563,7 +563,7 @@ class AnimationControlsPage {
         const currentVersion = this.currentVersion;
         
         // Remove version classes
-        this.container.classList.remove('version-1', 'version-2', 'version-3', 'version-5');
+        this.container.classList.remove('version-1', 'version-2', 'version-3', 'version-4');
         
         // Add restarting class
         this.container.classList.add('restarting-animation');

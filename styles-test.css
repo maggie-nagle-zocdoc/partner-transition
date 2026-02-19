@@ -405,9 +405,9 @@ body {
     opacity: 1 !important;
 }
 
-/* Reset for version 3, 5 */
+/* Reset for version 3, 4 */
 .restarting-animation .version-3 .logo-container,
-.restarting-animation .version-5 .logo-container {
+.restarting-animation .version-4 .logo-container {
     opacity: 0 !important;
     transform: scale(0) !important;
 }
@@ -511,38 +511,38 @@ body {
     }
 }
 
-/* 🧪 VERSION 5 ANIMATIONS - Rotate & Slide */
+/* 🧪 VERSION 4 ANIMATIONS - Rotate & Slide */
 
-/* Version 5: Logos rotate and slide in from sides, end at same position as version 1 */
-.version-5 .brand-logos {
+/* Version 4: Logos rotate and slide in from sides, end at same position as version 1 */
+.version-4 .brand-logos {
     gap: 0 !important;
     justify-content: center;
     align-items: center;
     position: relative;
 }
 
-.version-5 .brand-logos .logo-container {
+.version-4 .brand-logos .logo-container {
     position: relative !important;
 }
 
-.version-5 .brand-logos .logo-container:first-child {
+.version-4 .brand-logos .logo-container:first-child {
     animation: rotateSlideLeft 1s ease-out forwards !important;
     z-index: 3 !important;
 }
 
-.version-5 .brand-logos .logo-container:last-child {
+.version-4 .brand-logos .logo-container:last-child {
     animation: rotateSlideRight 1s ease-out forwards !important;
     z-index: 2 !important;
     margin-left: -12px !important; /* Same overlap as version 1 */
 }
 
-/* Hide dots in Version 5 */
-.version-5 .progress-dots {
+/* Hide dots in Version 4 */
+.version-4 .progress-dots {
     opacity: 0 !important;
     pointer-events: none;
 }
 
-.version-5 .transition-arrow {
+.version-4 .transition-arrow {
     display: none !important;
 }
 
