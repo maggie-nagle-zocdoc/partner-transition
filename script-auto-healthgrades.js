@@ -19,7 +19,7 @@ class AutoInterstitialPage {
     // Get redirect URL - specific Zocdoc booking URL
     getRedirectUrl() {
         // Base booking URL
-        const baseUrl = 'https://www.zocdoc.com/booking/patientinfo/e7876751-b906-4a9b-ae0c-65e638e9aa6b';
+        const baseUrl = 'https://www.zocdoc.com/booking/patientinfo/abe0419e-deab-42b8-b988-d03cc62e2f15';
         
         // Add UTM parameters for tracking
         const utmParams = new URLSearchParams({
